@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World Component - Standalone Demo</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Standalone Hello World Component Demo -->
+    <section class="hello-world fade-in" role="main">
+        <div class="container">
+            <h1 class="hello-world__title">
+                Hello World!
+            </h1>
+            <p class="hello-world__subtitle">
+                This is a standalone demonstration of the Hello World component. 
+                It showcases the core feature in isolation, perfect for testing and integration.
+            </p>
+            <div class="flex justify-center" style="gap: var(--space-4);">
+                <button class="btn btn--primary" onclick="displayMessage()">
+                    Display Message
+                </button>
+                <button class="btn btn--secondary" onclick="changeStyle()">
+                    Change Style
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message Display Area -->
+    <section class="p-8" style="background: white;">
+        <div class="container text-center">
+            <div id="messageArea" class="card" style="max-width: 500px; margin: 0 auto; display: none;">
+                <div class="card__body">
+                    <h3 class="text-lg font-semibold mb-3 text-primary">Dynamic Message</h3>
+                    <p id="dynamicMessage" class="text-gray-700"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let messageCount = 0;
+        let currentStyle = 'normal';
+        
+        function displayMessage() {
+            messageCount++;
+            const messageArea = document.getElementById('messageArea');
+            const messageText = document.getElementById('dynamicMessage');
+            
+            const messages = [
+                `Hello World! (Message #${messageCount})`,
+                `Welcome to our component demo! 🎉`,
+                `This is message number ${messageCount}`,
+                `Hello from the design system! ✨`,
+                `Component working perfectly! 🚀`
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            messageText.textContent = randomMessage;
+            messageArea.style.display = 'block';
+            messageArea.classList.add('fade-in');
+        }
+        
+        function changeStyle() {
+            const title = document.querySelector('.hello-world__title');
+            
+            if (currentStyle === 'normal') {
+                title.style.background = 'linear-gradient(45deg, var(--color-primary), var(--color-success))';
+                title.style.webkitBackgroundClip = 'text';
+                title.style.webkitTextFillColor = 'transparent';
+                title.style.backgroundClip = 'text';
+                currentStyle = 'gradient';
+            } else {
+                title.style.background = '';
+                title.style.webkitBackgroundClip = '';
+                title.style.webkitTextFillColor = '';
+                title.style.backgroundClip = '';
+                title.style.color = 'var(--color-primary)';
+                currentStyle = 'normal';
+            }
+        }
+    </script>
+</body>
+</html>

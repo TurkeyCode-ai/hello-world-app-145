@@ -1,0 +1,87 @@
+{
+  "name": "accessible-hello-world-backend",
+  "version": "1.0.0",
+  "description": "Accessible Hello World Web Application Backend with comprehensive accessibility testing suite",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "node scripts/build-css.js",
+    "build:js": "node scripts/build-js.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:accessibility": "jest --testPathPattern=accessibility",
+    "test:axe": "node tests/axe-runner.js",
+    "test:pa11y": "pa11y-ci",
+    "test:lighthouse": "lighthouse http://localhost:3000 --only-categories=accessibility --output=json --output-path=./reports/lighthouse-accessibility.json",
+    "test:performance": "jest --testPathPattern=performance",
+    "test:all-accessibility": "npm run test:axe && npm run test:pa11y && npm run test:lighthouse",
+    "test:all": "npm run test && npm run test:e2e && npm run test:accessibility && npm run test:performance",
+    "install-browsers": "playwright install",
+    "install:browsers": "playwright install",
+    "lint": "eslint .",
+    "serve": "serve -s dist -l 3000"
+  },
+  "keywords": [
+    "hello-world",
+    "accessibility",
+    "express",
+    "nodejs",
+    "api",
+    "node",
+    "rest-api"
+  ],
+  "author": "Backend Developer",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "compression": "^1.7.4",
+    "morgan": "^1.10.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "@playwright/test": "^1.40.0",
+    "@axe-core/playwright": "^4.8.2",
+    "@axe-core/puppeteer": "^4.8.2",
+    "lighthouse": "^11.4.0",
+    "axe-core": "^4.8.2",
+    "jest-axe": "^8.0.0",
+    "pa11y": "^7.0.0",
+    "pa11y-ci": "^3.1.0",
+    "puppeteer": "^21.6.0",
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/dom": "^9.3.4",
+    "@testing-library/user-event": "^14.5.1",
+    "eslint": "^8.55.0",
+    "serve": "^14.2.1",
+    "fs-extra": "^11.2.0",
+    "clean-css": "^5.3.2",
+    "uglify-js": "^3.17.4"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/tests/setup.js"],
+    "collectCoverageFrom": [
+      "**/*.{js,html}",
+      "!**/node_modules/**",
+      "!**/tests/**",
+      "!**/coverage/**"
+    ],
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ]
+  }
+}

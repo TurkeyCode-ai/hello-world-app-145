@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World - Design System Showcase</title>
+    <meta name="description" content="A modern Hello World application showcasing our comprehensive design system">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Skip to main content link for keyboard navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Enhanced Header Component -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header__content">
+                <div class="nav__brand">
+                    <a href="#" class="header__logo" aria-label="Hello World Home">
+                        <h1 class="brand__title">Hello World</h1>
+                        <span class="brand__subtitle">Design System</span>
+                    </a>
+                </div>
+                <nav class="nav" role="navigation" aria-label="Main navigation">
+                    <ul class="nav__menu" role="menubar">
+                        <li class="nav__item" role="none">
+                            <a href="#showcase" class="nav__link" role="menuitem">Showcase</a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="#features" class="nav__link" role="menuitem">Features</a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="#demo" class="nav__link" role="menuitem">Demo</a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="#components" class="nav__link" role="menuitem">Components</a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="styleguide.html" class="nav__link" role="menuitem">Style Guide</a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="#about" class="nav__link" role="menuitem">About</a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="#accessibility" class="nav__link" role="menuitem">Accessibility</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Enhanced Hero Section - Primary Feature -->
+        <section class="hero hello-world fade-in" id="showcase" aria-labelledby="showcase-title">
+            <div class="container">
+                <div class="hero__content">
+                    <h1 id="showcase-title" class="hero__title hello-world__title">
+                        Modern Design System
+                        <span class="hero__highlight">for Hello World</span>
+                        👋
+                    </h1>
+                    <p class="hero__description hello-world__subtitle">
+                        A comprehensive, accessible, and scalable design system built with modern CSS and JavaScript conventions. 
+                        This showcases clean, professional components ready to scale beyond simple implementations with modern web standards and user experience in mind.
+                    </p>
+                    <div class="hero__actions flex justify-center" style="gap: var(--space-4);">
+                        <button class="btn btn--primary btn--large" onclick="showMessage()" aria-describedby="say-hello-desc">
+                            Say Hello
+                        </button>
+                        <div id="say-hello-desc" class="visually-hidden">Click to display a random greeting message</div>
+                        <a href="styleguide.html" class="btn btn--secondary btn--large">
+                            View Components
+                        </a>
+                        <button class="btn btn--primary btn--large" type="button" onclick="showWelcomeMessage()" aria-describedby="get-started-desc">
+                            Get Started
+                        </button>
+                        <div id="get-started-desc" class="visually-hidden">Navigate to the getting started guide</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Features Section -->
+        <section class="features" id="features" aria-labelledby="features-title">
+            <div class="container" style="padding: 4rem 0;">
+                <h2 class="features__title text-3xl font-bold text-center mb-8" id="features-title">Design System Features</h2>
+                
+                <div class="features__grid grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8);">
+                    <!-- Enhanced Feature Card 1 -->
+                    <article class="feature-card card" tabindex="0" aria-labelledby="modern-design-title">
+                        <div class="feature-card__icon card__header" aria-hidden="true">
+                            <div class="icon icon--responsive">🎨</div>
+                        </div>
+                        <div class="card__body">
+                            <h3 id="modern-design-title" class="feature-card__title text-xl font-semibold text-primary">
+                                Modern Design
+                            </h3>
+                            <p class="feature-card__description text-gray-600 leading-relaxed">
+                                Clean, minimal interface following modern design principles with careful attention to typography, spacing, and visual hierarchy for excellent readability.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Enhanced Feature Card 2 -->
+                    <article class="feature-card card" tabindex="0" aria-labelledby="responsive-title">
+                        <div class="feature-card__icon card__header" aria-hidden="true">
+                            <div class="icon icon--responsive">📱</div>
+                        </div>
+                        <div class="card__body">
+                            <h3 id="responsive-title" class="feature-card__title text-xl font-semibold text-success">
+                                Fully Responsive
+                            </h3>
+                            <p class="feature-card__description text-gray-600 leading-relaxed">
+                                Mobile-first design that scales beautifully across all devices, from phones to desktop displays with fluid grid systems and flexible components.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Enhanced Feature Card 3 -->
+                    <article class="feature-card card" tabindex="0" aria-labelledby="accessible-title">
+                        <div class="feature-card__icon card__header" aria-hidden="true">
+                            <div class="icon icon--accessible">♿</div>
+                        </div>
+                        <div class="card__body">
+                            <h3 id="accessible-title" class="feature-card__title text-xl font-semibold text-warning">
+                                Accessibility First
+                            </h3>
+                            <p class="feature-card__description text-gray-600 leading-relaxed">
+                                WCAG 2.1 AA compliant with proper semantic markup, ARIA labels, keyboard navigation support, and screen reader optimization for inclusive experiences.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- New Feature Card 4 -->
+                    <article class="feature-card card" tabindex="0" aria-labelledby="performance-title">
+                        <div class="feature-card__icon card__header" aria-hidden="true">
+                            <div class="icon icon--performance">⚡</div>
+                        </div>
+                        <div class="card__body">
+                            <h3 id="performance-title" class="feature-card__title text-xl font-semibold text-error">
+                                Performance Optimized
+                            </h3>
+                            <p class="feature-card__description text-gray-600 leading-relaxed">
+                                Lightweight CSS with efficient selectors and modern techniques for fast loading and smooth interactions across all devices.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- New Feature Card 5 -->
+                    <article class="feature-card card" tabindex="0" aria-labelledby="framework-title">
+                        <div class="feature-card__icon card__header" aria-hidden="true">
+                            <div class="icon icon--modular">🔧</div>
+                        </div>
+                        <div class="card__body">
+                            <h3 id="framework-title" class="feature-card__title text-xl font-semibold text-primary">
+                                Modular Components
+                            </h3>
+                            <p class="feature-card__description text-gray-600 leading-relaxed">
+                                Atomic design principles with reusable components that follow BEM methodology for maintainable CSS and framework compatibility.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- New Feature Card 6 -->
+                    <article class="feature-card card" tabindex="0" aria-labelledby="tokens-title">
+                        <div class="feature-card__icon card__header" aria-hidden="true">
+                            <div class="icon icon--design-tokens">🎯</div>
+                        </div>
+                        <div class="card__body">
+                            <h3 id="tokens-title" class="feature-card__title text-xl font-semibold text-secondary">
+                                Design Tokens
+                            </h3>
+                            <p class="feature-card__description text-gray-600 leading-relaxed">
+                                Comprehensive system of design tokens using CSS custom properties for consistent theming and easy customization.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography Showcase -->
+        <section class="typography-showcase" aria-labelledby="typography-title">
+            <div class="container" style="padding: 4rem 0;">
+                <h2 class="section__title text-3xl font-bold text-center mb-8" id="typography-title">Typography System</h2>
+                <div class="typography-demo card" style="max-width: 800px; margin: 0 auto;">
+                    <div class="card__body">
+                        <div class="typography-demo__scale">
+                            <div class="text-4xl font-bold mb-2">Heading 1 - 2.5rem</div>
+                            <div class="text-3xl font-bold mb-2">Heading 1 Alternative - 3rem</div>
+                            <div class="text-2xl font-semibold mb-2 text-primary">Heading 2 - 2rem</div>
+                            <div class="text-xl font-medium mb-2 text-secondary">Heading 3 - 1.5rem</div>
+                            <div class="text-lg font-medium mb-2">Heading 4 - 1.25rem</div>
+                            <div class="text-base mb-2">Body Text - 1rem with normal weight</div>
+                            <div class="text-sm text-gray-600 mb-2">Small text for captions and metadata - 0.875rem</div>
+                            <code class="code text-sm">Code - JetBrains Mono font family</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Color Palette -->
+        <section class="color-showcase" aria-labelledby="color-title">
+            <div class="container" style="padding: 4rem 0;">
+                <h2 class="section__title text-3xl font-bold text-center mb-8" id="color-title">Color System</h2>
+                <div class="color-grid">
+                    <div class="color-group card">
+                        <div class="card__body">
+                            <h3 class="color-group__title font-medium mb-3">Primary Colors</h3>
+                            <div class="color-swatches grid grid-cols-2" style="gap: 0.5rem;">
+                                <div class="color-swatch color-swatch--primary flex items-center" style="gap: 0.5rem;" aria-label="Primary blue color">
+                                    <div class="bg-primary" style="width: 2rem; height: 2rem; border-radius: 0.25rem;"></div>
+                                    <div>
+                                        <span class="color-swatch__label text-sm font-medium">Primary</span>
+                                        <span class="color-swatch__value text-xs text-gray-500 block">#2563eb</span>
+                                    </div>
+                                </div>
+                                <div class="color-swatch color-swatch--secondary flex items-center" style="gap: 0.5rem;" aria-label="Secondary slate color">
+                                    <div class="bg-secondary" style="width: 2rem; height: 2rem; border-radius: 0.25rem;"></div>
+                                    <div>
+                                        <span class="color-swatch__label text-sm font-medium">Secondary</span>
+                                        <span class="color-swatch__value text-xs text-gray-500 block">#64748b</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-group card">
+                        <div class="card__body">
+                            <h3 class="color-group__title font-medium mb-3">State Colors</h3>
+                            <div class="color-swatches grid" style="grid-template-columns: 1fr; gap: 0.5rem;">
+                                <div class="color-swatch color-swatch--success flex items-center" style="gap: 0.5rem;" aria-label="Success green color">
+                                    <div class="bg-success" style="width: 1rem; height: 1rem; border-radius: 0.25rem;"></div>
+                                    <span class="color-swatch__label text-sm">Success - #10b981</span>
+                                </div>
+                                <div class="color-swatch color-swatch--warning flex items-center" style="gap: 0.5rem;" aria-label="Warning amber color">
+                                    <div class="bg-warning" style="width: 1rem; height: 1rem; border-radius: 0.25rem;"></div>
+                                    <span class="color-swatch__label text-sm">Warning - #f59e0b</span>
+                                </div>
+                                <div class="color-swatch color-swatch--error flex items-center" style="gap: 0.5rem;" aria-label="Error red color">
+                                    <div class="bg-error" style="width: 1rem; height: 1rem; border-radius: 0.25rem;"></div>
+                                    <span class="color-swatch__label text-sm">Error - #ef4444</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section id="demo" class="demo-section bg-gray-100" style="padding: 4rem 0; background: var(--color-gray-50);">
+            <div class="container">
+                <h2 class="text-3xl font-bold text-center mb-8">Interactive Demo</h2>
+                
+                <div class="demo-grid grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); margin-bottom: 2rem;">
+                    <!-- Buttons Demo Card -->
+                    <div class="demo-card card">
+                        <div class="card__header">
+                            <h3 class="demo-card__title text-xl font-semibold">Button Variations</h3>
+                        </div>
+                        <div class="card__body">
+                            <p class="mb-4 text-gray-600">Experience the design system in action with these interactive elements:</p>
+                            
+                            <div class="demo-card__content">
+                                <div class="mb-6">
+                                    <h4 class="font-medium mb-3">Primary & Secondary</h4>
+                                    <div class="flex flex-col" style="gap: 0.75rem;">
+                                        <div class="flex" style="gap: 0.75rem; flex-wrap: wrap;">
+                                            <button class="btn btn--primary" onclick="showMessage()">Primary Button</button>
+                                            <button class="btn btn--secondary">Secondary Button</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <h4 class="font-medium mb-3">State Colors</h4>
+                                    <div class="flex flex-col" style="gap: 0.75rem;">
+                                        <button class="btn btn--success">Success</button>
+                                        <button class="btn btn--warning">Warning</button>
+                                        <button class="btn btn--error">Error</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-3">Sizes</h4>
+                                    <div class="flex flex-col" style="gap: 0.75rem;">
+                                        <button class="btn btn--primary btn--large">Large Primary</button>
+                                        <button class="btn btn--secondary btn--small">Small Secondary</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Elements Demo Card -->
+                    <div class="demo-card card">
+                        <div class="card__header">
+                            <h3 class="demo-card__title text-xl font-semibold">Form Elements</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="demo-card__content">
+                                <div class="form-field mb-4">
+                                    <label for="demo-input-main" class="form-label block text-sm font-medium text-gray-700 mb-2">Input Label</label>
+                                    <input type="text" id="demo-input-main" class="form-input w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter text here" style="width: 100%; padding: var(--space-3); border: 1px solid var(--color-gray-300); border-radius: var(--radius-md);">
+                                </div>
+                                <div class="form-field">
+                                    <label for="demo-select-main" class="form-label block text-sm font-medium text-gray-700 mb-2">Select Label</label>
+                                    <select id="demo-select-main" class="form-select w-full px-4 py-2 border border-gray-300 rounded-md" style="width: 100%; padding: var(--space-3); border: 1px solid var(--color-gray-300); border-radius: var(--radius-md);">
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cards Demo -->
+                    <div class="demo-card card">
+                        <div class="card__header">
+                            <h3 class="demo-card__title text-xl font-semibold">Card Components</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="demo-card__content">
+                                <div class="card card--elevated">
+                                    <div class="card__body">
+                                        <h4 class="card__title text-lg font-medium mb-2">Sample Card</h4>
+                                        <p class="card__text text-gray-600 mb-4">This is a sample card component with elevation and proper spacing for content organization.</p>
+                                        <button class="btn btn--primary btn--small">Action</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Original Typography and Color Demo -->
+                <div class="card" style="max-width: 600px; margin: 0 auto;">
+                    <div class="card__header">
+                        <h3 class="text-xl font-semibold">Complete Component Library</h3>
+                    </div>
+                    <div class="card__body">
+                        <p class="mb-4 text-gray-600">
+                            Explore our comprehensive design system components:
+                        </p>
+                        
+                        <!-- Typography Showcase -->
+                        <div class="mb-6">
+                            <h4 class="font-medium mb-3">Typography Scale</h4>
+                            <div class="text-4xl font-bold mb-2">Heading 1</div>
+                            <div class="text-2xl font-semibold mb-2 text-primary">Heading 2</div>
+                            <div class="text-xl font-medium mb-2 text-secondary">Heading 3</div>
+                            <div class="text-base mb-2">Regular body text with normal weight</div>
+                            <div class="text-sm text-gray-600">Small text for captions and metadata</div>
+                        </div>
+                    </div>
+                    <div class="card__footer">
+                        <a href="styleguide.html" class="btn btn--primary">
+                            View Complete Style Guide →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Interactive Components Section -->
+        <section class="demo-section" id="components" aria-labelledby="components-title">
+            <div class="container" style="padding: 4rem 0;">
+                <h2 class="section__title text-3xl font-bold text-center mb-8" id="components-title">Component Library</h2>
+                <p class="text-center text-gray-600 mb-8">Comprehensive set of reusable components built with accessibility and scalability in mind.</p>
+                
+                <div class="demo-grid grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--space-8);">
+                    <!-- Enhanced Buttons Section -->
+                    <div class="demo-card card">
+                        <div class="card__header">
+                            <h3 class="demo-card__title">Button System</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="demo-card__content" style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-700 mb-2">States & Variants</h4>
+                                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                        <button class="btn btn--primary">Primary</button>
+                                        <button class="btn btn--secondary">Secondary</button>
+                                        <button class="btn btn--success">Success</button>
+                                        <button class="btn btn--warning">Warning</button>
+                                        <button class="btn btn--error">Error</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-700 mb-2">Sizes</h4>
+                                    <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                                        <button class="btn btn--primary btn--small">Small</button>
+                                        <button class="btn btn--primary">Default</button>
+                                        <button class="btn btn--primary btn--large">Large</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced Form Elements -->
+                    <div class="demo-card card">
+                        <div class="card__header">
+                            <h3 class="demo-card__title">Form Controls</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="demo-card__content" style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div class="form-field">
+                                    <label for="demo-text" class="form-label">Text Input</label>
+                                    <input type="text" id="demo-text" class="form-input" placeholder="Enter text">
+                                </div>
+                                <div class="form-field">
+                                    <label for="demo-email" class="form-label">Email Input</label>
+                                    <input type="email" id="demo-email" class="form-input" placeholder="user@example.com">
+                                </div>
+                                <div class="form-field">
+                                    <label for="demo-select-comp" class="form-label">Select Dropdown</label>
+                                    <select id="demo-select-comp" class="form-select">
+                                        <option value="">Choose an option</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                                </div>
+                                <div class="form-field">
+                                    <label class="form-label">
+                                        <input type="checkbox" class="form-checkbox">
+                                        Checkbox option
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced Card Variations -->
+                    <div class="demo-card card">
+                        <div class="card__header">
+                            <h3 class="demo-card__title">Card Variants</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="demo-card__content" style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div class="card card--elevated" style="padding: 1rem;">
+                                    <h4 class="text-sm font-medium">Elevated Card</h4>
+                                    <p class="text-sm text-gray-600 mt-1">With shadow elevation</p>
+                                </div>
+                                <div class="card" style="padding: 1rem; border: 2px solid var(--color-primary);">
+                                    <h4 class="text-sm font-medium text-primary">Outlined Card</h4>
+                                    <p class="text-sm text-gray-600 mt-1">With colored border</p>
+                                </div>
+                                <div class="card" style="padding: 1rem; background: var(--color-gray-50);">
+                                    <h4 class="text-sm font-medium">Filled Card</h4>
+                                    <p class="text-sm text-gray-600 mt-1">With background fill</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="p-16" id="about" style="background: white;" aria-labelledby="about-title">
+            <div class="container">
+                <h2 id="about-title" class="text-3xl font-bold text-center mb-8">About Our Design System</h2>
+                <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8);">
+                    <article class="card" tabindex="0" aria-labelledby="standards-title">
+                        <div class="card__body text-center">
+                            <h3 id="standards-title" class="text-xl font-semibold mb-4 text-primary">
+                                Built on Standards
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Following web standards and best practices to ensure compatibility, maintainability, and future-proof development with modern CSS and semantic HTML.
+                            </p>
+                        </div>
+                    </article>
+                    <article class="card" tabindex="0" aria-labelledby="scalable-title">
+                        <div class="card__body text-center">
+                            <h3 id="scalable-title" class="text-xl font-semibold mb-4 text-primary">
+                                Scalable Architecture
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Modular components and systematic approach that grows with your project needs and team requirements using atomic design principles.
+                            </p>
+                        </div>
+                    </article>
+                    <article class="card" tabindex="0" aria-labelledby="tested-title">
+                        <div class="card__body text-center">
+                            <h3 id="tested-title" class="text-xl font-semibold mb-4 text-primary">
+                                Thoroughly Tested
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Cross-browser tested and validated for accessibility compliance to ensure consistent experiences for all users across different platforms.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accessibility Features Section -->
+        <section id="accessibility" class="section section--alt p-16" style="background: var(--color-gray-50);" aria-labelledby="accessibility-heading">
+            <div class="container">
+                <h2 id="accessibility-heading" class="text-2xl font-bold mb-8 text-center text-primary">Accessibility Features</h2>
+                
+                <!-- Accessibility Standards Grid -->
+                <div class="grid mb-12" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6);">
+                    <article class="card" tabindex="0" aria-labelledby="wcag-title">
+                        <div class="card__body text-center">
+                            <div class="card__icon mb-4" aria-hidden="true" style="color: var(--color-primary); display: flex; justify-content: center;">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3 id="wcag-title" class="text-lg font-semibold mb-3 text-primary">WCAG 2.1 AA Compliant</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Full compliance with Web Content Accessibility Guidelines, ensuring 4.5:1 contrast ratios and proper semantic structure.
+                            </p>
+                        </div>
+                    </article>
+                    <article class="card" tabindex="0" aria-labelledby="keyboard-title">
+                        <div class="card__body text-center">
+                            <div class="card__icon mb-4" aria-hidden="true" style="color: var(--color-primary); display: flex; justify-content: center;">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3 id="keyboard-title" class="text-lg font-semibold mb-3 text-primary">Keyboard Navigation</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Complete keyboard accessibility with logical tab order, focus management, and keyboard shortcuts for all interactive elements.
+                            </p>
+                        </div>
+                    </article>
+                    <article class="card" tabindex="0" aria-labelledby="screen-reader-title">
+                        <div class="card__body text-center">
+                            <div class="card__icon mb-4" aria-hidden="true" style="color: var(--color-primary); display: flex; justify-content: center;">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3 id="screen-reader-title" class="text-lg font-semibold mb-3 text-primary">Screen Reader Optimized</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Comprehensive ARIA labels, landmarks, and semantic HTML structure for optimal screen reader experience.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+                
+                <!-- Interactive Demo Section -->
+                <div class="accessibility-demo p-8" style="background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+                    <h3 class="text-xl font-semibold mb-6 text-primary">Interactive Elements Demo</h3>
+                    
+                    <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: start;">
+                        <div>
+                            <div class="form-group mb-6">
+                                <label for="demo-input" class="block text-sm font-medium text-gray-700 mb-2">
+                                    Sample Input Field
+                                    <span class="text-red-500" aria-label="required">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="demo-input" 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                                    aria-describedby="demo-input-help demo-input-error"
+                                    aria-required="true"
+                                    placeholder="Enter your message"
+                                    style="width: 100%; padding: var(--space-3); border: 1px solid var(--color-gray-300); border-radius: var(--radius-md);"
+                                >
+                                <div id="demo-input-help" class="text-sm text-gray-500 mt-1">
+                                    This field demonstrates proper labeling and ARIA attributes
+                                </div>
+                                <div id="demo-input-error" class="text-sm text-red-600 mt-1" role="alert" aria-live="polite">
+                                    <!-- Error messages appear here -->
+                                </div>
+                            </div>
+                            
+                            <fieldset class="mb-6" style="border: 1px solid var(--color-gray-300); padding: var(--space-4); border-radius: var(--radius-md);">
+                                <legend class="text-sm font-medium text-gray-700 px-2">Preferred Theme</legend>
+                                <div class="mt-3 space-y-2">
+                                    <div class="flex items-center">
+                                        <input type="radio" id="theme-light" name="theme" value="light" class="mr-3" checked>
+                                        <label for="theme-light" class="text-sm text-gray-700">Light Theme</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="radio" id="theme-dark" name="theme" value="dark" class="mr-3">
+                                        <label for="theme-dark" class="text-sm text-gray-700">Dark Theme</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="radio" id="theme-auto" name="theme" value="auto" class="mr-3">
+                                        <label for="theme-auto" class="text-sm text-gray-700">Auto (System Preference)</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            
+                            <div class="flex items-center">
+                                <input type="checkbox" id="newsletter" class="mr-3">
+                                <label for="newsletter" class="text-sm text-gray-700">
+                                    Subscribe to accessibility updates
+                                    <span class="text-gray-500">(Optional)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="hello-world-demo">
+                            <h4 class="text-lg font-medium mb-4 text-primary">Hello World Demo</h4>
+                            <div class="demo-output p-4 mb-4" style="background: var(--color-gray-50); border-radius: var(--radius-md); border: 1px solid var(--color-gray-200);">
+                                <p class="hello-message" id="hello-output" aria-live="polite" aria-atomic="true">
+                                    Hello, World! Welcome to our accessible design system.
+                                </p>
+                            </div>
+                            <div class="demo-controls">
+                                <button type="button" class="btn btn--secondary" onclick="updateHelloMessage()" aria-describedby="update-btn-desc">
+                                    Update Message
+                                </button>
+                                <div id="update-btn-desc" class="visually-hidden">Click to change the hello world message</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Enhanced Footer Component -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content" style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: var(--space-8);">
+                <div class="footer__section">
+                    <h3 class="footer__title text-lg font-semibold mb-4">Hello World Design System</h3>
+                    <p class="footer__text text-gray-600 mb-4">Modern, accessible, and scalable design foundation built with comprehensive web standards.</p>
+                    <div class="footer__copyright text-sm text-gray-500">
+                        &copy; 2024 Hello World Design System. Built with modern web standards and accessibility in mind.
+                    </div>
+                </div>
+                <div class="footer__section">
+                    <h4 class="footer__heading text-base font-medium mb-3">Resources</h4>
+                    <ul class="footer__links" style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: var(--space-2);"><a href="styleguide.html" class="footer__link text-sm text-gray-400" style="text-decoration: none;">Style Guide</a></li>
+                        <li style="margin-bottom: var(--space-2);"><a href="#components" class="footer__link text-sm text-gray-400" style="text-decoration: none;">Components</a></li>
+                        <li style="margin-bottom: var(--space-2);"><a href="#" class="footer__link text-sm text-gray-400" style="text-decoration: none;">Documentation</a></li>
+                        <li style="margin-bottom: var(--space-2);"><a href="#accessibility" class="footer__link text-sm text-gray-400" style="text-decoration: none;">Accessibility Statement</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4 class="footer__heading text-base font-medium mb-3">Links</h4>
+                    <div class="footer__links" style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+                        <a href="#" class="text-sm text-gray-400" style="text-decoration: none;">Privacy</a>
+                        <a href="#" class="text-sm text-gray-400" style="text-decoration: none;">Terms</a>
+                        <a href="#" class="text-sm text-gray-400" style="text-decoration: none;">Contact</a>
+                        <a href="https://github.com" class="text-sm text-gray-400" style="text-decoration: none;">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Enhanced Interactive JavaScript -->
+    <script>
+        // Original showMessage functionality
+        function showMessage() {
+            const messages = [
+                "Hello World! 👋",
+                "Welcome to our design system! ✨",
+                "Isn't this beautiful? 🎨",
+                "Thanks for visiting! 😊",
+                "Modern web design rocks! 🚀"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            
+            // Create and show a temporary message
+            const messageEl = document.createElement('div');
+            messageEl.textContent = randomMessage;
+            messageEl.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--color-primary);
+                color: white;
+                padding: var(--space-4) var(--space-6);
+                border-radius: var(--radius-lg);
+                box-shadow: var(--shadow-lg);
+                font-weight: var(--font-medium);
+                z-index: 1000;
+                animation: slideIn 0.3s ease-out;
+            `;
+            document.body.appendChild(messageEl);
+            
+            setTimeout(() => {
+                if (messageEl.parentNode) {
+                    messageEl.style.animation = 'fadeOut 0.3s ease-out';
+                    setTimeout(() => {
+                        if (messageEl.parentNode) {
+                            messageEl.parentNode.removeChild(messageEl);
+                        }
+                    }, 300);
+                }
+            }, 3000);
+        }
+
+        // New showWelcomeMessage functionality
+        function showWelcomeMessage() {
+            const messageEl = document.createElement('div');
+            messageEl.textContent = 'Welcome to our Hello World application! 🚀';
+            messageEl.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--color-success, #10b981);
+                color: white;
+                padding: var(--space-4) var(--space-6);
+                border-radius: var(--radius-lg);
+                box-shadow: var(--shadow-lg);
+                font-weight: var(--font-medium);
+                z-index: 1000;
+                animation: slideIn 0.3s ease-out;
+            `;
+            document.body.appendChild(messageEl);
+            
+            setTimeout(() => {
+                if (messageEl.parentNode) {
+                    messageEl.style.animation = 'fadeOut 0.3s ease-out';
+                    setTimeout(() => {
+                        if (messageEl.parentNode) {
+                            messageEl.parentNode.removeChild(messageEl);
+                        }
+                    }, 300);
+                }
+            }, 3000);
+        }
+
+        // updateHelloMessage functionality for accessibility demo
+        function updateHelloMessage() {
+            const messages = [
+                "Hello, World! Welcome to our accessible design system.",
+                "Greetings! This is an accessibility-first design system.",
+                "Hi there! Building inclusive web experiences for everyone.",
+                "Welcome! Accessibility is not an afterthought here.",
+                "Hello! Modern design meets universal access."
+            ];
+            
+            const output = document.getElementById('hello-output');
+            if (output) {
+                const currentMessage = output.textContent.trim();
+                const currentIndex = messages.indexOf(currentMessage);
+                const nextIndex = (currentIndex + 1) % messages.length;
+                output.textContent = messages[nextIndex];
+                
+                // Announce the change to screen readers
+                output.setAttribute('aria-live', 'polite');
+            }
+        }
+        
+        // Add CSS animations dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes fadeOut {
+                to { opacity: 0; transform: translateY(-10px); }
+            }
+            .skip-link {
+                position: absolute;
+                top: -40px;
+                left: 6px;
+                background: var(--color-primary);
+                color: white;
+                padding: 8px;
+                text-decoration: none;
+                border-radius: 4px;
+                z-index: 1000;
+            }
+            .skip-link:focus {
+                top: 6px;
+            }
+            .visually-hidden, .sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+            /* Enhanced focus indicators for keyboard navigation */
+            body.keyboard-navigation *:focus {
+                outline: 3px solid var(--color-primary) !important;
+                outline-offset: 2px !important;
+            }
+            /* Hero section enhancements */
+            .hero__highlight {
+                display: block;
+                color: var(--color-primary, #2563eb);
+            }
+            /* Navigation enhancements */
+            .nav__brand .brand__subtitle {
+                font-size: 0.875rem;
+                color: var(--color-gray-600, #6b7280);
+                font-weight: 400;
+            }
+            .nav__menu {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                gap: var(--space-6, 1.5rem);
+            }
+            /* Component demo enhancements */
+            .demo-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: var(--space-8, 2rem);
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Enhanced DOMContentLoaded functionality combining both approaches
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers to demo buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                if (button.textContent.includes('Get Started')) {
+                    button.addEventListener('click', function() {
+                        showWelcomeMessage();
+                    });
+                }
+                
+                // Enhanced button click feedback
+                button.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Add keyboard navigation support
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    document.body.classList.add('keyboard-navigation');
+                }
+            });
+            
+            document.addEventListener('mousedown', function() {
+                document.body.classList.remove('keyboard-navigation');
+            });
+        });
+
+        // Enhanced keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            // Add escape key functionality for modal-like elements
+            if (event.key === 'Escape') {
+                // Handle escape key for any modal or overlay elements
+                const focusedElement = document.activeElement;
+                if (focusedElement && focusedElement.classList.contains('card')) {
+                    focusedElement.blur();
+                }
+            }
+        });
+
+        // Focus management for cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    // Handle card activation if needed
+                    const cardTitle = this.querySelector('h3');
+                    if (cardTitle) {
+                        console.log('Card activated:', cardTitle.textContent);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

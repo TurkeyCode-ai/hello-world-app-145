@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Guide - Hello World Design System</title>
+    <meta name="description" content="Comprehensive style guide and component library for the Hello World design system with accessibility features and usage examples">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--color-primary);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 1000;
+            border-radius: var(--radius-md);
+        }
+        
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        .styleguide-section {
+            margin: var(--space-16) 0;
+            padding: var(--space-8);
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-base);
+            border: 1px solid var(--color-gray-200);
+        }
+        
+        .styleguide-section:not(:last-child) {
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+        
+        .styleguide-section__title {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-6);
+            color: var(--color-gray-800);
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-6) 0;
+        }
+        
+        .color-group h3 {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+            color: var(--color-gray-700);
+        }
+        
+        .color-swatches {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+        
+        .color-swatch {
+            text-align: center;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            margin-bottom: var(--spacing-2);
+            border-radius: var(--radius-md);
+        }
+        
+        .color-swatch--primary .color-swatch__color { background: var(--color-primary); }
+        .color-swatch--secondary .color-swatch__color { background: var(--color-secondary); }
+        .color-swatch--success .color-swatch__color { background: var(--color-success); }
+        .color-swatch--warning .color-swatch__color { background: var(--color-warning); }
+        .color-swatch--error .color-swatch__color { background: var(--color-error); }
+        
+        .color-swatch__color {
+            height: 80px;
+            width: 80px;
+            border-radius: var(--radius-md);
+            justify-content: center;
+            font-weight: var(--font-medium);
+            font-size: var(--text-sm);
+            flex-shrink: 0;
+        }
+        
+        .color-swatch__info {
+            padding: var(--space-3);
+            background: var(--color-gray-50);
+            font-size: var(--text-xs);
+            flex: 1;
+        }
+        
+        .color-swatch__label,
+        .color-swatch__name {
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-1);
+        }
+        
+        .color-swatch__value,
+        .color-swatch__hex {
+            font-family: var(--font-mono);
+        }
+        
+        .color-swatch__usage {
+            color: var(--color-gray-600);
+        }
+        
+        .color-circle {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            border: 2px solid var(--color-gray-200);
+            flex-shrink: 0;
+        }
+        
+        .color-info {
+            flex: 1;
+        }
+        
+        .typography-example {
+            margin: var(--space-4) 0;
+            padding: var(--space-4);
+            border-left: 4px solid var(--color-primary);
+        }
+        
+        .typography-examples {
+            gap: var(--space-6);
+        }
+        
+        .typography-sample {
+            margin-bottom: var(--space-2);
+        }
+        
+        .typography-meta {
+            margin: 0;
+            color: var(--color-gray-600);
+            font-size: var(--text-sm);
+        }
+        
+        .component-example {
+            padding: var(--space-6);
+            border: 1px solid var(--color-gray-200);
+            background-color: white;
+            margin: 1rem 0;
+            background: var(--color-gray-50);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--color-primary);
+        }
+        
+        .component-examples {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+        
+        .component-demo {
+            padding: var(--spacing-6);
+            margin: var(--spacing-4) 0;
+        }
+        
+        .component-demo + .code-example {
+            margin-top: 0;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: var(--space-3);
+            flex-wrap: wrap;
+        }
+        
+        .form-example,
+        .form-demo {
+            max-width: 500px;
+        }
+        
+        .form-group,
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+            margin-bottom: var(--space-4);
+        }
+        
+        .label,
+        .form-label {
+            color: var(--color-gray-700);
+            font-weight: var(--font-medium);
+        }
+        
+        .label__required {
+            color: var(--color-error);
+        }
+        
+        .input,
+        .form-input,
+        .form-select,
+        .form-textarea {
+            border: 1px solid var(--color-gray-300);
+            font-size: var(--text-base);
+            padding: var(--space-3);
+            border-radius: var(--radius-md);
+        }
+        
+        .input:focus,
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+            border-color: var(--color-primary);
+        }
+        
+        .input:disabled,
+        .form-input:disabled {
+            background: var(--color-gray-100);
+            color: var(--color-gray-500);
+            cursor: not-allowed;
+        }
+        
+        .fieldset {
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+        }
+        
+        .fieldset__legend {
+            padding: 0 var(--space-2);
+            font-weight: var(--font-semibold);
+        }
+        
+        .checkbox-group,
+        .radio-group {
+            margin: var(--space-2) 0;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+        
+        .checkbox-label, 
+        .radio-label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .checkbox-text {
+            cursor: pointer;
+        }
+        
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .grid {
+            display: grid;
+            gap: var(--space-4);
+        }
+        
+        .grid--2col,
+        .grid--2-cols {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        
+        .grid--3-cols {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        
+        .card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-gray-200);
+            transition: all 0.2s ease;
+        }
+        
+        .card:focus {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+        
+        .card--highlighted {
+            background: var(--color-primary-50, #eff6ff);
+        }
+        
+        .card--elevated {
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .card__icon {
+            color: var(--color-primary);
+            margin-bottom: var(--space-3);
+        }
+        
+        .card__title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-3);
+        }
+        
+        .card__description,
+        .card__text {
+            line-height: 1.6;
+            margin-bottom: var(--space-4);
+            color: var(--color-gray-600);
+        }
+        
+        .card__actions {
+            margin-top: auto;
+        }
+        
+        .card__body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .code-block,
+        .code-sample,
+        .code-example {
+            background: var(--color-gray-800);
+            color: var(--color-gray-100);
+            overflow-x: auto;
+            padding: var(--spacing-4);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--font-size-sm);
+            border-radius: var(--radius-md);
+            margin-top: 1rem;
+        }
+        
+        .code-example {
+            background-color: var(--color-gray-800);
+        }
+        
+        pre code {
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-sm);
+            display: block;
+        }
+        
+        .spacing-demo {
+            background-color: var(--color-primary);
+            color: white;
+            display: inline-block;
+            margin: var(--spacing-1) 0;
+            border-radius: var(--radius-sm);
+        }
+        
+        .variation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+        
+        .page-title {
+            font-size: var(--text-4xl);
+        }
+        
+        .page-subtitle {
+            font-size: var(--text-xl);
+            max-width: 600px;
+            margin: 0 auto var(--space-8);
+        }
+        
+        .nav-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .nav-link {
+            transition: color 0.2s ease;
+        }
+        
+        .nav-link:hover,
+        .nav-link[aria-current="page"] {
+            color: var(--color-primary);
+        }
+        
+        .header__title-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .footer__content {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .footer__links {
+            display: flex;
+            gap: var(--space-4);
+        }
+        
+        .footer__link {
+            text-decoration: none;
+        }
+        
+        .footer__link:hover {
+            color: var(--color-primary);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Header -->
+    <header role="banner" class="header">
+        <div class="container">
+            <div class="header__content">
+                <h1 class="header__title">
+                    <a href="index.html" class="header__title-link">← Hello World Design System</a>
+                </h1>
+                <nav role="navigation" aria-label="Main navigation" class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Overview</a></li>
+                        <li><a href="#colors" class="nav-link">Colors</a></li>
+                        <li><a href="#typography" class="nav-link">Typography</a></li>
+                        <li><a href="#spacing" class="nav-link">Spacing</a></li>
+                        <li><a href="#components" class="nav-link">Components</a></li>
+                        <li><a href="index.html#accessibility" class="nav-link">Accessibility</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <main id="main-content" role="main" class="container" style="padding: var(--space-8) var(--space-4);">
+        <section class="text-center mb-8">
+            <h2 class="page-title">Interactive Style Guide</h2>
+            <p class="page-subtitle">
+                Comprehensive component library and design system documentation with accessibility features and usage examples.
+            </p>
+        </section>
+
+        <!-- Colors Section -->
+        <section class="styleguide-section" id="colors" aria-labelledby="colors-heading">
+            <h3 id="colors-heading" class="styleguide-section__title">Color System</h3>
+            <p class="text-gray-600 mb-6">
+                Our color palette is carefully designed to provide excellent contrast ratios and visual hierarchy.
+                All colors meet WCAG 2.1 AA accessibility standards.
+            </p>
+            
+            <div class="component-example">
+                <div class="color-grid">
+                    <div class="color-group">
+                        <h3>Brand Colors</h3>
+                        <div class="color-swatches">
+                            <div class="color-swatch color-swatch--primary">
+                                <div class="color-swatch__color"></div>
+                                <div class="color-swatch__info">
+                                    <div class="color-swatch__label">Primary Blue</div>
+                                    <div class="color-swatch__value">#2563eb</div>
+                                    <div class="text-sm text-gray-600">--color-primary</div>
+                                    <div class="text-sm text-gray-600">Contrast ratio: 7.3:1 on white</div>
+                                </div>
+                            </div>
+                            <div class="color-swatch color-swatch--secondary">
+                                <div class="color-swatch__color"></div>
+                                <div class="color-swatch__info">
+                                    <div class="color-swatch__label">Secondary Slate</div>
+                                    <div class="color-swatch__value">#64748b</div>
+                                    <div class="text-sm text-gray-600">--color-secondary</div>
+                                    <div class="text-sm text-gray-600">Contrast ratio: 5.8:1 on white</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="color-group">
+                        <h3>Status Colors</h3>
+                        <div class="color-swatches">
+                            <div class="color-swatch color-swatch--success">
+                                <div class="color-swatch__color"></div>
+                                <div class="color-swatch__info">
+                                    <div class="color-swatch__label">Success Green</div>
+                                    <div class="color-swatch__value">#10b981</div>
+                                    <div class="text-sm text-gray-600">--color-success</div>
+                                    <div class="text-sm text-gray-600">Contrast ratio: 4.7:1 on white</div>
+                                </div>
+                            </div>
+                            <div class="color-swatch color-swatch--warning">
+                                <div class="color-swatch__color"></div>
+                                <div class="color-swatch__info">
+                                    <div class="color-swatch__label">Warning Amber</div>
+                                    <div class="color-swatch__value">#f59e0b</div>
+                                    <div class="text-sm text-gray-600">--color-warning</div>
+                                    <div class="text-sm text-gray-600">Contrast ratio: 2.8:1 - Use with dark text</div>
+                                </div>
+                            </div>
+                            <div class="color-swatch color-swatch--error">
+                                <div class="color-swatch__color"></div>
+                                <div class="color-swatch__info">
+                                    <div class="color-swatch__label">Error Red</div>
+                                    <div class="color-swatch__value">#ef4444</div>
+                                    <div class="text-sm text-gray-600">--color-error</div>
+                                    <div class="text-sm text-gray-600">Contrast ratio: 4.9:1 on white</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gray Scale -->
+            <div class="mt-8">
+                <h4 class="text-xl font-semibold mb-4 mt-8 text-gray-700">Neutral Grays</h4>
+                <div class="grid grid-cols-2 grid-cols-md-4" style="gap: 1rem;">
+                    <div class="color-swatch flex-col items-start">
+                        <div class="color-circle bg-gray-50 mb-2"></div>
+                        <div class="text-sm font-medium">Gray 50</div>
+                        <div class="text-xs text-gray-600">#f8fafc</div>
+                    </div>
+                    <div class="color-swatch flex-col items-start">
+                        <div class="color-circle bg-gray-100 mb-2"></div>
+                        <div class="text-sm font-medium">Gray 200</div>
+                        <div class="text-xs text-gray-600">#e2e8f0</div>
+                    </div>
+                    <div class="color-swatch flex-col items-start">
+                        <div class="color-circle" style="background-color: var(--color-gray-400); margin-bottom: 0.5rem;"></div>
+                        <div class="text-sm font-medium">Gray 400</div>
+                        <div class="text-xs text-gray-600">#94a3b8</div>
+                    </div>
+                    <div class="color-swatch flex-col items-start">
+                        <div class="color-circle" style="background-color: var(--color-gray-600); margin-bottom: 0.5rem;"></div>
+                        <div class="text-sm font-medium">Gray 600</div>
+                        <div class="text-xs text-gray-600">#475569</div>
+                    </div>
+                    <div class="color-swatch flex-col items-start">
+                        <div class="color-circle" style="background-color: var(--color-gray-800); margin-bottom: 0.5rem;"></div>
+                        <div class="text-sm font-medium">Gray 800</div>
+                        <div class="text-xs text-gray-600">#1e293b</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-sample">
+/* CSS Custom Properties */
+:root {
+  --color-primary: #2563eb;
+  --color-secondary: #64748b;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-400: #94a3b8;
+  --color-gray-600: #475569;
+  --color-gray-800: #1e293b;
+}
+            </div>
+        </section>
+
+        <!-- Typography Section -->
+        <section class="styleguide-section" id="typography" aria-labelledby="typography-heading">
+            <h3 id="typography-heading" class="styleguide-section__title">Typography System</h3>
+            <p class="text-gray-600 mb-6">
+                Our typography scale uses the Inter font family for excellent readability and modern aesthetics.
+                JetBrains Mono is used for code and monospace content.
+            </p>
+            
+            <h4 class="text-xl font-semibold mb-4 text-gray-700">Font Families</h4>
+            <div class="typography-example">
+                <p style="font-family: var(--font-primary); font-size: var(--text-lg);">
+                    Primary Font: Inter - Used for UI elements and body text
+                </p>
+                <p style="font-family: var(--font-mono); font-size: var(--text-lg);">
+                    Monospace Font: JetBrains Mono - Used for code and technical content
+                </p>
+            </div>
+
+            <!-- Enhanced Typography Scale -->
+            <div class="component-example">
+                <h1 class="text-3xl">Heading 1 - Display Large</h1>
+                <h2 class="text-2xl">Heading 2 - Display Medium</h2>
+                <h3 class="text-xl">Heading 3 - Display Small</h3>
+                <h4 class="text-lg">Heading 4 - Title Large</h4>
+                <h5 class="text-base font-semibold">Heading 5 - Title Medium</h5>
+                <h6 class="text-sm font-semibold">Heading 6 - Title Small</h6>
+                <p class="text-base">Body text - Regular paragraph content with good readability and accessibility standards for comfortable reading experience.</p>
+                <p class="text-sm">Small text - Secondary information and captions.</p>
+                <code class="code">Code text - Monospace for technical content</code>
+            </div>
+
+            <!-- Font Scale -->
+            <div class="mb-8">
+                <h4 class="text-xl font-semibold mb-4 mt-8 text-gray-700">Font Size Scale</h4>
+                <div class="typography-examples">
+                    <div class="typography-example">
+                        <h1 class="typography-sample text-4xl font-bold">Heading 1 - Page Title</h1>
+                        <p class="typography-meta">Inter, 3rem (48px), Font-weight: 700, Line-height: 1.2</p>
+                        
+                        <h2 class="typography-sample text-3xl font-bold">Heading 2 - Section Title</h2>
+                        <p class="typography-meta">Inter, 2rem (32px), Font-weight: 600, Line-height: 1.2</p>
+                        
+                        <h3 class="typography-sample text-2xl font-semibold">Heading 3 - Subsection</h3>
+                        <p class="typography-meta">Inter, 1.5rem (24px), Font-weight: 600, Line-height: 1.2</p>
+                        
+                        <h4 class="typography-sample text-xl font-semibold">Heading 4</h4>
+                        <p class="typography-meta">Inter, 1.25rem (20px), Font-weight: 600, Line-height: 1.2</p>
+                        
+                        <p class="typography-sample text-lg">Large Text</p>
+                        <p class="typography-meta">Inter, 1.125rem (18px), Font-weight: 400, Line-height: 1.5</p>
+                        
+                        <p class="typography-sample text-base">Body text - This is regular paragraph text that demonstrates the readability and accessibility of our typography system. It maintains proper contrast and comfortable reading line length.</p>
+                        <p class="typography-meta">Inter, 1rem (16px), Font-weight: 400, Line-height: 1.5</p>
+                        
+                        <p class="typography-sample text-sm">Small Text</p>
+                        <p class="typography-meta">Inter, 0.875rem (14px), Font-weight: 400, Line-height: 1.4</p>
+                        
+                        <code class="typography-sample">Code text - console.log('Hello, World!');</code>
+                        <p class="typography-meta">JetBrains Mono, 0.875rem (14px), Font-weight: 400</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Font Weights -->
+            <div class="mb-8">
+                <h4 class="text-xl font-semibold mb-4">Font Weights</h4>
+                <div class="space-y-2">
+                    <div class="text-lg font-normal">Normal Weight (400) - Regular text</div>
+                    <div class="text-lg font-medium">Medium Weight (500) - Emphasis</div>
+                    <div class="text-lg font-semibold">Semibold Weight (600) - Headings</div>
+                    <div class="text-lg font-bold">Bold Weight (700) - Strong emphasis</div>
+                </div>
+            </div>
+
+            <!-- Code Example -->
+            <div class="code-sample">
+&lt;h1 class="text-3xl"&gt;Display Large&lt;/h1&gt;
+&lt;p class="text-base"&gt;Body text&lt;/p&gt;
+&lt;code class="code"&gt;Code text&lt;/code&gt;
+
+/* Typography Classes */
+.text-4xl { font-size: var(--font-size-4xl); }
+.text-3xl { font-size: var(--font-size-3xl); }
+.text-2xl { font-size: var(--font-size-2xl); }
+.font-bold { font-weight: var(--font-weight-bold); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.leading-tight { line-height: var(--line-height-tight); }
+            </div>
+        </section>
+
+        <!-- Spacing Section -->
+        <section id="spacing" class="styleguide-section">
+            <h2 class="styleguide-section__title">Spacing System</h2>
+            <p class="text-gray-600 mb-6">
+                Consistent spacing creates visual rhythm and hierarchy. Our spacing scale is based on 0.25rem (4px) increments.
+            </p>
+            
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-4">Spacing Scale</h3>
+                <div class="space-y-2">
+                    <div><span class="spacing-demo p-1">1</span> = 0.25rem (4px)</div>
+                    <div><span class="spacing-demo p-2">2</span> = 0.5rem (8px)</div>
+                    <div><span class="spacing-demo p-3">3</span> = 0.75rem (12px)</div>
+                    <div><span class="spacing-demo p-4">4</span> = 1rem (16px)</div>
+                    <div><span class="spacing-demo p-5">5</span> = 1.25rem (20px)</div>
+                    <div><span class="spacing-demo p-6">6</span> = 1.5rem (24px)</div>
+                    <div><span class="spacing-demo p-8">8</span> = 2rem (32px)</div>
+                    <div><span class="spacing-demo p-10">10</span> = 2.5rem (40px)</div>
+                </div>
+            </div>
+            
+            <div class="component-example">
+                <h3>Spacing Utilities</h3>
+                <div style="background: #f0f0f0; padding: 1rem;">
+                    <div class="p-1" style="background: white; margin-bottom: 0.5rem;">Padding 1 (.25rem)</div>
+                    <div class="p-2" style="background: white; margin-bottom: 0.5rem;">Padding 2 (.5rem)</div>
+                    <div class="p-4" style="background: white; margin-bottom: 0.5rem;">Padding 4 (1rem)</div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-4">Usage Examples</h3>
+                <div class="code-example">
+/* Padding utilities */
+.p-4 { padding: 1rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+
+/* Margin utilities */  
+.m-4 { margin: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+                </div>
+            </div>
+        </section>
+
+        <!-- Components Section -->
+        <section class="styleguide-section" id="components">
+            <h3 class="styleguide-section__title">Component Library</h3>
+            <p class="text-gray-600 mb-6">
+                Reusable components built with BEM methodology and semantic HTML for maximum accessibility and maintainability.
+            </p>
+
+            <!-- Button Components -->
+            <section aria-labelledby="buttons-heading">
+                <h4 id="buttons-heading" class="text-xl font-semibold mb-4 text-gray-700">Button Components</h4>
+                <p class="text-gray-600 mb-4">Buttons are available in multiple variants and sizes for different use cases.</p>
+                
+                <div class="component-example">
+                    <h5>Button Variants</h5>
+                    <div class="variation-grid">
+                        <div>
+                            <h6>Primary Buttons</h6>
+                            <div class="button-group">
+                                <button class="btn btn--primary btn--large">Large Primary</button>
+                                <button class="btn btn--primary">Default Primary</button>
+                                <button class="btn btn--primary btn--small">Small Primary</button>
+                                <button type="button" class="btn btn--primary" disabled>Disabled</button>
+                            </div>
+                        </div>
+                        <div>
+                            <h6>Secondary Buttons</h6>
+                            <div class="button-group">
+                                <button class="btn btn--secondary btn--large">Large Secondary</button>
+                                <button class="btn btn--secondary">Default Secondary</button>
+                                <button class="btn btn--secondary btn--small">Small Secondary</button>
+                                <button type="button" class="btn btn--secondary" disabled>Disabled</button>
+                            </div>
+                        </div>
+                        <div>
+                            <h6>State Buttons</h6>
+                            <div class="button-group">
+                                <button class="btn btn--success">Success</button>
+                                <button class="btn btn--warning">Warning</button>
+                                <button class="btn btn--error">Error</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-sample">
+&lt;button class="btn btn--primary"&gt;Primary Button&lt;/button&gt;
+&lt;button class="btn btn--secondary"&gt;Secondary Button&lt;/button&gt;
+&lt;button class="btn btn--primary btn--large"&gt;Large Button&lt;/button&gt;
+&lt;button class="btn btn--primary btn--small"&gt;Small Button&lt;/button&gt;
+&lt;button class="btn btn--success"&gt;Success Button&lt;/button&gt;
+                </div>
+            </section>
+
+            <!-- Form Elements -->
+            <section aria-labelledby="forms-heading">
+                <h4 id="forms-heading" class="text-xl font-semibold mb-4 mt-8 text-gray-700">Form Components</h4>
+                <p class="text-gray-600 mb-4">Form elements with consistent styling and accessibility features.</p>
+                
+                <div class="component-example">
+                    <form class="form-demo" style="max-width: 400px;">
+                        <div class="form-field">
+                            <label for="text-input" class="form-label">Text Input</label>
+                            <input type="text" id="text-input" class="form-input" placeholder="Enter text">
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="email-input" class="form-label">Email Input <span class="label__required" aria-label="required">*</span></label>
+                            <input type="email" id="email-input" class="form-input" placeholder="your@email.com" aria-required="true">
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="select1" class="form-label">Select Dropdown</label>
+                            <select id="select1" class="form-select">
+                                <option>Choose an option</option>
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="textarea1" class="form-label">Textarea</label>
+                            <textarea id="textarea1" class="form-textarea" rows="3" placeholder="Enter longer text here"></textarea>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="disabled-input" class="form-label">Disabled Input</label>
+                            <input type="text" id="disabled-input" class="form-input" placeholder="Disabled" disabled>
+                        </div>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset__legend">Options</legend>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="checkbox">
+                                    <span class="checkbox-text">I agree to the terms</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="checkbox" checked>
+                                    <span class="checkbox-text">Option 2 (Checked)</span>
+                                </label>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset class="fieldset">
+                            <legend class="fieldset__legend">Choice</legend>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="choice1" name="choices" value="1" class="radio" checked>
+                                    <label for="choice1" class="radio-label">Choice 1</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="choice2" name="choices" value="2" class="radio">
+                                    <label for="choice2" class="radio-label">Choice 2</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <button type="submit" class="btn btn--primary">Submit Form</button>
+                    </form>
+                </div>
+
+                <div class="code-sample">
+&lt;div class="form-field"&gt;
+  &lt;label for="input" class="form-label"&gt;Label&lt;/label&gt;
+  &lt;input type="text" id="input" class="form-input" placeholder="Placeholder"&gt;
+&lt;/div&gt;
+
+&lt;fieldset class="fieldset"&gt;
+  &lt;legend class="fieldset__legend"&gt;Options&lt;/legend&gt;
+  &lt;label class="checkbox-label"&gt;
+    &lt;input type="checkbox" class="checkbox"&gt;
+    &lt;span class="checkbox-text"&gt;Checkbox Option&lt;/span&gt;
+  &lt;/label&gt;
+&lt;/fieldset&gt;
+                </div>
+            </section>
+
+            <!-- Cards -->
+            <section aria-labelledby="cards-heading">
+                <h4 id="cards-heading" class="text-xl font-semibold mb-4 mt-8 text-gray-700">Card Components</h4>
+                <p class="text-gray-600 mb-4">Cards for grouping related content with optional elevation and actions.</p>
+                
+                <div class="component-example">
+                    <div class="variation-grid">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 class="card__title">Basic Card</h3>
+                                <p class="card__text">This is a basic card with minimal styling and clean design.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card card--elevated">
+                            <div class="card__body">
+                                <h3 class="card__title">Elevated Card</h3>
+                                <p class="card__text">This card has elevation shadow for prominence and includes an action button.</p>
+                                <div class="card__actions">
+                                    <button class="btn btn--primary btn--small">Action</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <article class="card card--highlighted" tabindex="0" aria-labelledby="highlighted-card-title">
+                            <div class="card__icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="card__body">
+                                <h5 id="highlighted-card-title" class="card__title">Featured Card</h5>
+                                <p class="card__description">This card has additional highlighting and an icon to demonstrate variations in card styling.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="code-sample">
+&lt;div class="card card--elevated"&gt;
+  &lt;div class="card__body"&gt;
+    &lt;h3 class="card__title"&gt;Card Title&lt;/h3&gt;
+    &lt;p class="card__text"&gt;Card content goes here.&lt;/p&gt;
+    &lt;div class="card__actions"&gt;
+      &lt;button class="btn btn--primary btn--small"&gt;Action&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+                </div>
+            </section>
+
+            <!-- Grid System -->
+            <section aria-labelledby="grid-heading">
+                <h4 id="grid-heading" class="text-xl font-semibold mb-4 mt-8 text-gray-700">Grid System</h4>
+                <p class="text-gray-600 mb-4">Flexible grid system using CSS Grid with responsive breakpoints.</p>
+                
+                <div class="component-demo">
+                    <div class="grid grid--2-cols" style="gap: 1rem;">
+                        <div style="background: var(--color-primary); color: white; padding: 1rem; border-radius: 4px;">Column 1</div>
+                        <div style="background: var(--color-secondary); color: white; padding: 1rem; border-radius: 4px;">Column 2</div>
+                    </div>
+                    
+                    <div class="grid grid--3-cols" style="gap: 1rem; margin-top: 1rem;">
+                        <div style="background: var(--color-success); color: white; padding: 1rem; border-radius: 4px;">Column 1</div>
+                        <div style="background: var(--color-warning); color: white; padding: 1rem; border-radius: 4px;">Column 2</div>
+                        <div style="background: var(--color-error); color: white; padding: 1rem; border-radius: 4px;">Column 3</div>
+                    </div>
+                </div>
+
+                <div class="code-sample">
+&lt;div class="grid grid--2-cols"&gt;
+  &lt;div&gt;Column 1&lt;/div&gt;
+  &lt;div&gt;Column 2&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="grid grid--3-cols"&gt;
+  &lt;div&gt;Column 1&lt;/div&gt;
+  &lt;div&gt;Column 2&lt;/div&gt;
+  &lt;div&gt;Column 3&lt;/div&gt;
+&lt;/div&gt;
+                </div>
+            </section>
+
+            <!-- Hello World Component -->
+            <section aria-labelledby="hello-world-heading">
+                <h4 id="hello-world-heading" class="text-xl font-semibold mb-4 mt-8 text-gray-700">Hello World Component</h4>
+                <div class="component-example">
+                    <div class="hello-world" style="min-height: 300px; background: var(--color-gray-50);">
+                        <h1 class="hello-world__title" style="font-size: 2rem;">Hello World!</h1>
+                        <p class="hello-world__subtitle" style="font-size: var(--text-base);">
+                            This is the main Hello World component showcasing our design system.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="code-example">
+&lt;div class="hello-world"&gt;
+    &lt;h1 class="hello-world__title"&gt;Hello World!&lt;/h1&gt;
+    &lt;p class="hello-world__subtitle"&gt;
+        Welcome message content...
+    &lt;/p&gt;
+&lt;/div&gt;
+                </div>
+            </section>
+
+            <!-- Utility Classes -->
+            <section aria-labelledby="utilities-heading">
+                <h4 id="utilities-heading" class="text-xl font-semibold mb-4 mt-8 text-gray-700">Utility Classes</h4>
+                <p class="text-gray-600 mb-4">Helper classes for spacing, typography, and layout adjustments.</p>
+                
+                <div class="component-example">
+                    <h3>Text Utilities</h3>
+                    <p class="text-center font-bold">Centered bold text</p>
+                    <p class="text-right font-semibold text-primary">Right-aligned primary text</p>
+                    <p class="text-secondary font-medium">Secondary medium text</p>
+                    <p class="text-muted">Muted text color</p>
+                    
+                    <div class="flex items-center justify-center p-4" style="background: var(--color-gray-100); border-radius: var(--radius-md); margin-top: 1rem;">
+                        <span>Flexbox Centered Content</span>
+                    </div>
+                </div>
+
+                <div class="code-sample">
+&lt;!-- Spacing --&gt;
+&lt;div class="p-4 m-2"&gt;Padding 4, Margin 2&lt;/div&gt;
+
+&lt;!-- Typography --&gt;
+&lt;p class="text-center font-bold"&gt;Centered bold text&lt;/p&gt;
+&lt;p class="text-muted"&gt;Muted text&lt;/p&gt;
+
+/* Text Utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Color Utilities */
+.text-primary { color: var(--color-primary); }
+.text-gray-600 { color: var(--color-gray-600); }
+.bg-white { background-color: white; }
+
+/* Layout Utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+
+/* Spacing Utilities */
+.p-6 { padding: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+                </div>
+            </section>
+        </section>
+
+        <!-- Responsive Design -->
+        <section class="styleguide-section">
+            <h3 class="styleguide-section__title">Responsive Design</h3>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-4);">
+                <div class="card">
+                    <div class="card__body text-center">
+                        <h4 class="font-semibold mb-2 text-primary">Mobile First</h4>
+                        <p class="text-sm text-gray-600">320px - 768px</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__body text-center">
+                        <h4 class="font-semibold mb-2 text-primary">Tablet</h4>
+                        <p class="text-sm text-gray-600">769px - 1024px</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__body text-center">
+                        <h4 class="font-semibold mb-2 text-primary">Desktop</h4>
+                        <p class="text-sm text-gray-600">1025px+</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Usage Guidelines -->
+        <section class="styleguide-section">
+            <h2 class="styleguide-section__title">Usage Guidelines</h2>
+            <div class="grid grid--2col">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">✅ Best Practices</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li>• Use semantic HTML elements for better accessibility</li>
+                        <li>• Follow BEM naming convention for custom components</li>
+                        <li>• Maintain consistent spacing using the design system scale</li>
+                        <li>• Test components across different screen sizes</li>
+                        <li>• Ensure proper color contrast ratios (4.5:1 minimum)</li>
+                        <li>• Use CSS custom properties for theming</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">❌ What to Avoid</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li>• Don't use arbitrary spacing values outside the scale</li>
+                        <li>• Avoid mixing different color palettes</li>
+                        <li>• Don't override component styles with !important</li>
+                        <li>• Avoid using non-semantic HTML elements unnecessarily</li>
+                        <li>• Don't forget to test keyboard navigation</li>
+                        <li>• Avoid inconsistent typography hierarchy</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo" class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">Hello World Style Guide</h3>
+                    <p class="footer__text">
+                        © 2024 Hello World Design System Style Guide - Built for scalability and accessibility
+                    </p>
+                </div>
+                <div class="footer__links">
+                    <a href="index.html" class="footer__link">Back to Overview</a>
+                    <a href="#" class="footer__link">Documentation</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

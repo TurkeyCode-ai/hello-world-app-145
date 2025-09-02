@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Accessible Hello World Web Application demonstrating modern web accessibility standards">
+    <title>Hello World - Accessible Web Application</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAP///AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+</head>
+<body>
+    <!-- Skip to main content link for screen readers -->
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+    
+    <!-- Header with proper landmark -->
+    <header role="banner" class="header">
+        <nav role="navigation" aria-label="Main navigation" class="nav">
+            <h1 class="nav__title">Hello World App</h1>
+            <button class="nav__toggle" 
+                    aria-expanded="false" 
+                    aria-controls="nav-menu" 
+                    aria-label="Toggle navigation menu">
+                <span class="nav__toggle-icon" aria-hidden="true"></span>
+                <span class="nav__toggle-text">Menu</span>
+            </button>
+            <ul id="nav-menu" class="nav__menu" role="menubar">
+                <li role="none">
+                    <a href="#main-content" role="menuitem" class="nav__link">Home</a>
+                </li>
+                <li role="none">
+                    <a href="#accessibility-features" role="menuitem" class="nav__link">Accessibility</a>
+                </li>
+                <li role="none">
+                    <a href="#settings" role="menuitem" class="nav__link">Settings</a>
+                </li>
+                <li role="none">
+                    <a href="#simple-interface" role="menuitem" class="nav__link">Simple View</a>
+                </li>
+                <li role="none">
+                    <a href="#api-demo" role="menuitem" class="nav__link">API Demo</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content area -->
+    <main id="main-content" class="hello-world-container main app" role="main">
+        <div class="container">
+            <!-- Enhanced App Header Section -->
+            <header class="app__header">
+                <p class="app__subtitle">A modern web application built with vanilla JavaScript</p>
+            </header>
+            
+            <!-- Existing Hello World Component Section with Enhanced Controls -->
+            <section class="hello-section" id="hello-world-section" aria-labelledby="hello-world-title">
+                <div class="hello-world" id="helloWorldComponent">
+                    <h1 class="hello-world__text app__title" id="hello-world-title" aria-label="Hello World greeting">
+                        Hello World
+                    </h1>
+                    <div class="hello-world__animation-wrapper">
+                        <div class="hello-world__pulse"></div>
+                        <!-- Enhanced Animation Elements -->
+                        <div class="hello-world__animation">
+                            <div class="animation-circle animation-circle--1"></div>
+                            <div class="animation-circle animation-circle--2"></div>
+                            <div class="animation-circle animation-circle--3"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enhanced Interactive Section -->
+                <div class="hello-section__content hello-world__content">
+                    <div class="hello-world__message" 
+                         role="status" 
+                         aria-live="polite" 
+                         id="hello-message">
+                        Welcome to our accessible Hello World application!
+                    </div>
+                    
+                    <!-- Enhanced Controls Section -->
+                    <div class="hello-section__interactive hello-world__controls">
+                        <button type="button" 
+                                class="btn btn--primary"
+                                id="hello-btn"
+                                aria-describedby="hello-description hello-message">
+                            Say Hello
+                        </button>
+                        <button type="button" 
+                                class="btn btn--secondary"
+                                id="reset-btn">
+                            Reset
+                        </button>
+                        <p id="hello-description" class="sr-only">
+                            Click this button to generate a personalized hello message
+                        </p>
+                    </div>
+
+                    <!-- Enhanced User Input Section -->
+                    <div class="input-section hello-world__input-group" aria-labelledby="input-title">
+                        <h3 id="input-title" class="input-section__title">Personalize Your Greeting</h3>
+                        
+                        <!-- Simple Name Input -->
+                        <div class="form-group">
+                            <label for="name-input" class="form-label input-label">Enter your name:</label>
+                            <input type="text" 
+                                   id="name-input" 
+                                   class="form-input text-input"
+                                   aria-describedby="name-help name-error"
+                                   aria-required="false"
+                                   placeholder="Your name here..."
+                                   maxlength="50">
+                            <small id="name-help" class="form-help input-help">
+                                We'll personalize your greeting
+                            </small>
+                            <div id="name-error" class="form-error" aria-live="polite" role="alert"></div>
+                        </div>
+                        
+                        <!-- Advanced Form Options -->
+                        <form class="input-form" novalidate>
+                            <div class="form-group">
+                                <label for="user-name" class="form-label">Additional Name Options:</label>
+                                <input type="text" 
+                                       id="user-name" 
+                                       class="form-input"
+                                       aria-describedby="advanced-name-help advanced-name-error"
+                                       aria-required="false"
+                                       placeholder="Enter additional name details (optional)">
+                                <div id="advanced-name-help" class="form-help">
+                                    Enter additional name details for more personalization
+                                </div>
+                                <div id="advanced-name-error" class="form-error" aria-live="polite" role="alert"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <fieldset class="fieldset">
+                                    <legend class="fieldset__legend">Preferred Greeting Style:</legend>
+                                    <div class="radio-group" role="radiogroup" aria-labelledby="greeting-style">
+                                        <label class="radio-label">
+                                            <input type="radio" 
+                                                   name="greeting-style" 
+                                                   value="formal" 
+                                                   class="radio-input"
+                                                   checked>
+                                            <span class="radio-custom" aria-hidden="true"></span>
+                                            Formal
+                                        </label>
+                                        <label class="radio-label">
+                                            <input type="radio" 
+                                                   name="greeting-style" 
+                                                   value="casual" 
+                                                   class="radio-input">
+                                            <span class="radio-custom" aria-hidden="true"></span>
+                                            Casual
+                                        </label>
+                                        <label class="radio-label">
+                                            <input type="radio" 
+                                                   name="greeting-style" 
+                                                   value="enthusiastic" 
+                                                   class="radio-input">
+                                            <span class="radio-custom" aria-hidden="true"></span>
+                                            Enthusiastic
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <button type="submit" class="btn btn--secondary">
+                                Update Greeting
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Simple Interface Section -->
+            <section id="simple-interface" class="simple-hello-section" aria-labelledby="simple-hello-title">
+                <h2 id="simple-hello-title" class="simple-hello-section__title">Simple Interface</h2>
+                <div class="hello-world hello-world--simple">
+                    <div class="hello-world__container">
+                        <div class="hello-world__content">
+                            <h3 class="hello-world__greeting" id="simple-greeting">Hello, World!</h3>
+                            <p class="hello-world__description">Welcome to our simple and elegant web application.</p>
+                            
+                            <div class="hello-world__interaction">
+                                <input 
+                                    type="text" 
+                                    class="hello-world__input" 
+                                    id="simple-name-input"
+                                    placeholder="Enter your name..."
+                                    aria-label="Enter your name for simple greeting"
+                                    maxlength="50"
+                                >
+                                <button 
+                                    class="hello-world__button btn" 
+                                    id="simple-greet-button"
+                                    type="button"
+                                    aria-describedby="simple-greeting"
+                                >
+                                    Say Hello
+                                </button>
+                            </div>
+                            
+                            <div class="hello-world__message" id="simple-message-display" role="status" aria-live="polite"></div>
+                        </div>
+                        
+                        <div class="hello-world__visual">
+                            <div class="hello-world__icon" aria-hidden="true">
+                                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="60" cy="60" r="55" stroke="currentColor" stroke-width="4" fill="none"/>
+                                    <path d="M40 70 Q60 85 80 70" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/>
+                                    <circle cx="45" cy="45" r="3" fill="currentColor"/>
+                                    <circle cx="75" cy="45" r="3" fill="currentColor"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New API Demo Section - Integrated from new functionality -->
+            <section id="api-demo" class="api-demo-section" aria-labelledby="api-demo-title">
+                <h2 id="api-demo-title" class="api-demo-section__title">API Demo Interface</h2>
+                <div class="card api-demo-card">
+                    <p class="message api-demo__message">Welcome to our super simple Hello World application.</p>
+                    <p class="description api-demo__description">This app demonstrates a complete build-to-deploy pipeline.</p>
+                    
+                    <div class="button-group api-demo__buttons">
+                        <button 
+                            id="fetchBtn" 
+                            class="btn btn-primary btn--api" 
+                            aria-label="Fetch hello message from API"
+                        >
+                            Fetch API Message
+                        </button>
+                        <button 
+                            id="healthBtn" 
+                            class="btn btn-secondary btn--health"
+                            aria-label="Check application health status"
+                        >
+                            Health Check
+                        </button>
+                    </div>
+                    
+                    <div id="response" class="response api-response" aria-live="polite" role="status"></div>
+                    
+                    <div class="api-demo__status">
+                        <p class="status-info">Environment: <span id="environment" class="status-value">Loading...</span></p>
+                        <p class="status-info">Status: <span id="status" class="status-indicator">Ready</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Accessibility Features Section -->
+            <section id="accessibility-features" 
+                     class="features-section" 
+                     aria-labelledby="features-title">
+                <h2 id="features-title" class="features-section__title">Accessibility Features</h2>
+                <div class="features-grid">
+                    <article class="feature-card" aria-labelledby="feature-1-title">
+                        <h3 id="feature-1-title" class="feature-card__title">Keyboard Navigation</h3>
+                        <p class="feature-card__text">
+                            Full keyboard support with visible focus indicators and logical tab order.
+                        </p>
+                    </article>
+                    
+                    <article class="feature-card" aria-labelledby="feature-2-title">
+                        <h3 id="feature-2-title" class="feature-card__title">Screen Reader Support</h3>
+                        <p class="feature-card__text">
+                            Semantic HTML, ARIA labels, and live regions for screen reader compatibility.
+                        </p>
+                    </article>
+                    
+                    <article class="feature-card" aria-labelledby="feature-3-title">
+                        <h3 id="feature-3-title" class="feature-card__title">High Contrast</h3>
+                        <p class="feature-card__text">
+                            WCAG compliant color contrast ratios for improved readability.
+                        </p>
+                    </article>
+                    
+                    <article class="feature-card" aria-labelledby="feature-4-title">
+                        <h3 id="feature-4-title" class="feature-card__title">Responsive Design</h3>
+                        <p class="feature-card__text">
+                            Mobile-first design with touch-friendly interface elements.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="settings-section" aria-labelledby="settings-title">
+                <h2 id="settings-title" class="settings-section__title">Accessibility Settings</h2>
+                <div class="settings-panel">
+                    <div class="setting-item">
+                        <label class="toggle-label">
+                            <input type="checkbox" class="toggle-input" id="reduced-motion">
+                            <span class="toggle-slider" aria-hidden="true"></span>
+                            Reduce Motion
+                        </label>
+                        <p class="setting-description">Minimize animations and transitions</p>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label class="toggle-label">
+                            <input type="checkbox" class="toggle-input" id="high-contrast">
+                            <span class="toggle-slider" aria-hidden="true"></span>
+                            High Contrast Mode
+                        </label>
+                        <p class="setting-description">Increase contrast for better visibility</p>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label for="font-size" class="setting-label">Font Size:</label>
+                        <select id="font-size" class="setting-select">
+                            <option value="small">Small</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="large">Large</option>
+                            <option value="extra-large">Extra Large</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Enhanced Footer -->
+    <footer role="contentinfo" class="footer app__footer">
+        <div class="container">
+            <p class="footer__text">
+                &copy; 2024 Accessible Hello World App. Built with modern web standards.
+                <a href="#" class="footer__link">Accessibility Statement</a>
+            </p>
+            <p class="app__footer-text">Built with ❤️ using vanilla JavaScript</p>
+        </div>
+    </footer>
+
+    <!-- Loading indicator for dynamic content -->
+    <div id="loading" class="loading" aria-hidden="true" role="status" aria-label="Loading content">
+        <span class="loading__spinner" aria-hidden="true"></span>
+        <span class="sr-only">Loading...</span>
+    </div>
+    
+    <!-- Enhanced script loading with new utilities and API functionality -->
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/components/hello-world.js"></script>
+    <script src="js/main.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

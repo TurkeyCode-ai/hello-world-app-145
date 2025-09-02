@@ -1,0 +1,131 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+*.log
+logs/
+logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Language & Runtime Specific
+node_modules/
+*.js.map
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Build & Compilation Artifacts
+build/
+dist/
+out/
+build/Release
+*.min.js
+*.min.css
+
+# Dependency Directories
+jspm_packages/
+bower_components/
+bower_components
+typings/
+
+# Testing & Coverage
+coverage/
+*.lcov
+.nyc_output/
+.nyc_output
+lib-cov
+
+# Temporary Files
+tmp/
+temp/
+.tmp/
+
+# Caches
+.cache/
+.npm/
+.eslintcache
+.parcel-cache
+
+# Performance & Profiling
+*.profile
+*.heap
+
+# Local configuration files
+.local/
+
+# Runtime configuration
+.runtime/
+
+# Node.js specific
+.lock-wscript
+.node_repl_history
+*.tgz
+.yarn-integrity
+
+# TypeScript specific
+*.tsbuildinfo
+
+# Build tool caches
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Task runner intermediate storage
+.grunt
+
+# Framework specific outputs
+.next
+.nuxt
+.cache
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Package Locks (KEEP)
+!package-lock.json
+!yarn.lock
+
+# Critical Production Assets (NEVER IGNORE)
+!public/
+!static/
+!assets/
+!media/
+!uploads/

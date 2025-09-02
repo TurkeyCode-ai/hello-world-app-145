@@ -1,0 +1,25 @@
+{
+  "defaults": {
+    "timeout": 30000,
+    "wait": 500,
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+    },
+    "standard": "WCAG2AA",
+    "level": "error",
+    "reporter": "json",
+    "includeNotices": false,
+    "includeWarnings": true,
+    "ignore": []
+  },
+  "urls": [
+    {
+      "url": "http://localhost:3000",
+      "screenCapture": "./reports/pa11y-screenshot-home.png"
+    },
+    {
+      "url": "http://localhost:3000/about",
+      "screenCapture": "./reports/pa11y-screenshot-about.png"
+    }
+  ]
+}
