@@ -37,7 +37,7 @@ RUN npm install --only=production && \
     npm cache clean --force
 
 # Copy built application and necessary files
-COPY --from=builder /app/dist ./dist/
+COPY --from=builder /app/ ./dist/
 COPY --from=builder /app/server.js ./
 COPY --from=builder /app/index.html ./
 
